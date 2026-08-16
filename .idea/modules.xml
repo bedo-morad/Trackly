@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Trackly.iml" filepath="$PROJECT_DIR$/Trackly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Trackly-Web/Trackly-Web.iml" filepath="$PROJECT_DIR$/Trackly-Web/Trackly-Web.iml" />
     </modules>
   </component>
 </project>
