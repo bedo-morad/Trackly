@@ -1,0 +1,48 @@
+package com.ship.trackly.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Entity(name = "shipment")
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Shipment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+    @Column(nullable = false, unique = true)
+    private String trackingNumber;
+    @Column(nullable = false)
+    private String origin;
+    @Column(nullable = false)
+    private String destination;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ShipmentStatus status;
+    @Column(nullable = false,updatable = false)
+    private LocalDateTime createdAt;
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+    private String currentLocation;
+    private String estimatedDelivery;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+        if (status == null) {
+            status = ShipmentStatus.ORDER_PLACED;
+        }
+    }
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
+}
