@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 public class ShipmentDTO {
 
     @Getter
@@ -28,5 +30,19 @@ public class ShipmentDTO {
     public static class UpdateShipmentStatusRequest {
         private ShipmentStatus status;
         private String currentLocation;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class StatusUpdateMessage{
+        private String shipmentId;
+        private String trackingNumber;
+        private ShipmentStatus status;
+        private String currentLocation;
+        private LocalDateTime timestamp;
+        private String message;
     }
 }
